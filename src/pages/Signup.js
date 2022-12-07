@@ -23,7 +23,7 @@ const Signup = () => {
           setAlert(null)
         }, 2000);
     }else if( password !== cpassword ) {
-        setAlert("password and confirm passwor do not match")
+        setAlert("password and confirm password do not match")
         setTimeout(() => {
           setAlert(null)
         }, 2000);
@@ -37,10 +37,10 @@ const Signup = () => {
     }
   };
   return (
-    <section className='min-h-screen w-full bg-gray-200 py-10'>
-        <div className='w-full flex place-content-center p-10'>
+    <section className='md:h-screen  w-full bg-gray-200 py-10'>
+        <div className='w-full flex place-items-center p-5 md:p-10'>
             <form onSubmit={handleSignUp} className="w-full md:max-w-[450px] mx-auto mt-16 shadow-lg bg-gray-100 rounded-md flex flex-col p-4">
-                <h1 className="text-center text-4xl font-bold py-3">Create Account</h1>
+                <h1 className="text-center text-2xl md:text-4xl font-bold py-3">Create Account</h1>
                 <div className="my-2">
                      <label htmlFor="name" className='text-xl font-bold'>Name:</label>
                     <input

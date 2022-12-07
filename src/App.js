@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import {useAuthContext} from './context/useAuthContext'
 // //pages
 import Home from './pages/Home'
+import Myblogs from './pages/Myblogs'
 import SingleBlog from './pages/SingleBlog'
 import CreateBlog from './pages/CreateBlog'
-import Myblogs from './pages/Myblogs'
 import EditBlog from './pages/EditBlog'
 // Login and Signin
 import Login from './pages/Login'
@@ -26,23 +26,23 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <Home /> : <Navigate to='/login' />}
-            >
-            </Route>
-            <Route
-              path="/create-blog"
-              element={<CreateBlog /> }
-              >
-              </Route>
-            <Route
-              path="/my-blog"
-              element={user ? <Myblogs /> : <Navigate to='/login' />}
+              element={<Home /> }
             >
             </Route>
             <Route
               path="/:id"
-              element={user ?<SingleBlog /> : <Navigate to='/login' />}
+              element={<SingleBlog />}
             >
+            </Route>            
+            <Route
+              path="/my-post"
+              element={user ?<Myblogs /> : <Navigate to='/login' />}
+            >
+            </Route>
+            <Route
+              path="/create-post"
+              element={user ? <CreateBlog />: <Navigate to='/login' />}
+              >
             </Route>
             <Route
               path="/edit-blog/:id"

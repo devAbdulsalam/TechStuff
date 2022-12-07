@@ -24,10 +24,10 @@ const Login = () => {
   };
 
   return (
-    <section className='md:h-screen min-h-[760px]   w-full bg-gray-200 py-10'>
-        <div className='w-full flex place-content-center p-10'>
+    <section className='md:h-screen  w-full bg-gray-200 py-10'>
+        <div className='w-full flex place-items-center p-5 md:p-10'>
             <form onSubmit={handleLogin} className="w-full md:max-w-[450px] mx-auto mt-16 shadow-lg bg-gray-100 rounded-md flex flex-col p-4">
-                <h1 className="text-center text-4xl font-bold py-3">Login</h1>
+                <h1 className="text-center text-2xl md:text-4xl font-bold py-3 w-full">Login</h1>
                 <div className="my-2">
                     <label htmlFor="phone" className='text-xl font-bold'>Phone Number:</label>
                     <input onChange={(e) => setphone(e.target.value)}

@@ -44,7 +44,7 @@ const EditBlog = () => {
                 const blog = {title, subtitle, content}
                  setIsLoading(true)
                 const response = await fetch(`/blogs`, {
-                        method: "POST",
+                        method: "PUT",
                         headers : {
                             "content-type" : "application/json",
                             'Authorization' : `Bearer ${user.token}`
@@ -69,8 +69,8 @@ const EditBlog = () => {
             }
         }
   return (
-    <section className='min-h-screen w-full bg-gray-200 py-10'>
-        <div className='w-full flex place-content-center p-10'>
+    <section className='md:h-screen w-full bg-gray-200 py-10'>
+        <div className='w-full flex place-content-center p-5 md:p-10'>
             <form onSubmit={handleSubmit} className="rounded-md bg-gray-50 p-2 mx-1 shadow-lg mt-10">
 				        <h1 className="text-center text-4xl font-bold py-10">Edit Blog post</h1>
                 <div className="row">
