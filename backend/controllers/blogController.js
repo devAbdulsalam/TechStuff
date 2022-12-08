@@ -1,18 +1,21 @@
 const { default: mongoose } = require('mongoose')
 const Blog = require('../models/blog')
 
-// get all blogs
-const getAllBlog = async (req, res) => {
-    const blog = await Blog.find({}).sort({createdAt: -1 })
+
+
+// get users blogs
+const myBlog = async (req, res) => {
+    const user_id = req.user._id
+    const blog = await Blog.find({user_id}).sort({createdAt: -1 })
     if(!blog){
         return res.status(404).json({ error: 'Blog not found'})
     }
     res.status(200).json(blog)
 }
-// get users blogs
-const myBlog = async (req, res) => {
-    const user_id = req.user._id
-    const blog = await Blog.find({user_id}).sort({createdAt: -1 })
+
+// get all blogs
+const getAllBlog = async (req, res) => {
+    const blog = await Blog.find({}).sort({createdAt: -1 })
     if(!blog){
         return res.status(404).json({ error: 'Blog not found'})
     }
@@ -65,14 +68,21 @@ const deleteBlog = async (req, res) => {
 
 // update a blog
 const updateBlog = async (req, res) => {
-     const {id} = req.params
-     if(!mongoose.Types.ObjectId.isValid({_id: id})){
+    const {id} = req.params
+     if(!mongoose.Types.ObjectId.isValid({id})){
          return res.status(404).json({ error: 'Not a valid id'})
         }
-
     try{
-        const blog = await Blog.findByIdAndUpdate({_id :id}, {...req.body})
-        res.status(200).json({blog, message: 'Blog updated successfully'})
+        const blog = await Blog.findByIdAndUpdate({_id :id})
+        if(blog){
+            blog.title = req.body.title || blog.title
+            blog.subtitle = req.body.subtitle || blog.subtitle
+            blog.author = req.body.author || blog.author
+            blog.keywords = req.body.keywords || blog.keywords
+            blog.content = req.body.content || blog.content
+        }
+        const updated = await blog.save()
+        res.status(200).json({updated, message: 'Blog updated successfully'})
     } catch (error) {
         res.status(404).json({error: error.message})
     }

@@ -6,7 +6,7 @@ const router = express.Router()
 
 
 // // all blogs
-router.get('/', getAllBlog)
+router.get('/allblogs', getAllBlog)
 
 
 // single blog
@@ -15,10 +15,8 @@ router.get('/:id', singleBlog)
 ////Authenticated user
 router.use(requireAuth)
 
-
-// //new blog
-router.get('/my-blog', myBlog)
-
+// //my blog
+router.get('/', myBlog)
 
 // //new blog
 router.post('/', createBlog)
@@ -27,7 +25,7 @@ router.post('/', createBlog)
 router.delete('/:id', deleteBlog)
 
 // //update a blog
-router.put('/:id', updateBlog)
+router.post('/:id', updateBlog)
 
 
 module.exports = router
