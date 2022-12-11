@@ -3,12 +3,16 @@ require('dotenv').config()
 const express = require('express');
 const compression = require('compression')
 const mongoose = require("mongoose");
+const cors = require("cors")
 const blogRoutes = require('./routes/blogs')
 const userRoutes = require('./routes/user')
 
 // express app
 const app = express();
 app.use(compression());
+app.use(cors({
+    origin: "https://localhost:3000",
+}));
 app.use(express.json());
 
 // //connect database

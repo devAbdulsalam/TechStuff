@@ -2,16 +2,20 @@ const  mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const walletSchema = new Schema({
+    userId:{
+        type : String,
+        require: true
+    },
     phone:{
         type : String,
         require: true
     },
     balance:{
-        type : number,
+        type : Number,
         require: true
     },
     transfer_pin:{
-        type : number,
+        type : String,
         require: true
     },
 }, {timestamps : true});
