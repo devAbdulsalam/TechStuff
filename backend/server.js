@@ -9,10 +9,11 @@ const userRoutes = require('./routes/user')
 
 // express app
 const app = express();
-app.use(compression());
 app.use(cors({
     origin: "https://localhost:3000",
 }));
+
+app.use(compression());
 app.use(express.json());
 
 // //connect database
